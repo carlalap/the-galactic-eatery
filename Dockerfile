@@ -76,7 +76,7 @@ RUN apt-get install -y tidy
 # Node.js and NPM via NVM (Node Version Manager)
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 ENV NVM_DIR="/root/.nvm"
-RUN [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install 12 && npm install -g npm
+RUN [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install 16
 
 # Create test user
 RUN useradd -M correction_tester
