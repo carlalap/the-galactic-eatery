@@ -1,8 +1,8 @@
 # Variables
-DOCKER_IMAGE_NAME = the-Galactic-Eatery
-DOCKER_CONTAINER_NAME = the-Galactic-Eatery_container
+DOCKER_IMAGE_NAME = the-galactic-eatery
+DOCKER_CONTAINER_NAME = the-galactic-eatery_container
 HOST_DIRECTORY=./
-CONTAINER_DIRECTORY=/the-Galactic-Eatery
+CONTAINER_DIRECTORY=/the-galactic-eatery
 .PHONY: build run exec stop clean
 
 

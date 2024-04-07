@@ -1,4 +1,7 @@
-FROM ubuntu:20.00
+FROM ubuntu:20.04
+
+# Set noninteractive mode
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update 
 RUN apt-get -y upgrade
@@ -10,8 +13,8 @@ RUN apt-get install -y \
     emacs \
     locales \
     build-essential \
-    python3.10 \
-    python3.10-dev \
+    python3.8 \
+    python3.8-dev \
     python3-pip \
     tidy
 
@@ -27,14 +30,16 @@ RUN echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mo
 RUN mkdir -p /data/db
 RUN apt-get update
 
+ENV TZ=America/Los_Angeles
+RUN apt-get install -y tzdata
+
 RUN apt-get install -y mongodb-org
 
 ADD init.d-mongod /etc/init.d/mongod
 RUN chmod u+x /etc/init.d/mongod
 
 # Python
-# Instalar paquetes de Python
-# Instalar paquetes de Python
+# Installing Python Packages
 RUN apt-get install -y \
     build-essential \
     zlib1g-dev \
@@ -46,7 +51,7 @@ RUN apt-get install -y \
     libffi-dev \
     libsqlite3-dev
 
-# Installing Python Packets
+# Installing Python Packages
 RUN pip3 install \
     pycodestyle==2.5 \
     mypy \
@@ -68,18 +73,13 @@ RUN curl -o "/usr/bin/w3c_validator.py" "https://raw.githubusercontent.com/holbe
 RUN chmod u+x "/usr/bin/w3c_validator.py"
 RUN apt-get install -y tidy
 
-# Node JS
-RUN curl -sl https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
-RUN bash nodesource_setup.sh
-
-RUN apt-get update && apt-get install -y nodejs
-
-RUN mkdir /tmp/node_packages
-COPY package.json /tmp/node_packages/package.json
-RUN cd /tmp/node_packages && npm install
+# Node.js and NPM via NVM (Node Version Manager)
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+ENV NVM_DIR="/root/.nvm"
+RUN [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install 12 && npm install -g npm
 
 # Create test user
 RUN useradd -M correction_tester
 
-# Keep the container running indef 
+# Keep the container running indefinitely 
 CMD ["tail", "-f", "/dev/null"]
