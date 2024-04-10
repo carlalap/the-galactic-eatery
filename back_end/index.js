@@ -91,7 +91,7 @@ function verifyToken(request, response, next) {
     }
 }
 
-// GET method
+// GET method to gather the information of ALL DISHES ++++++++++++++++++++++
 app.get("/dishes", (request, response) => {
     // getting list of name of dish
     mongoDB.connectDB()
@@ -104,7 +104,88 @@ app.get("/dishes", (request, response) => {
     })
 })
 
-// POST method
+// Endpoint to filter dishes by NAME   ++++++++++++++++++++++++++++++++++
+app.get("/dishes/name", async (request, response) => {
+    // getting filter parameters from query string
+    const { name } = request.query;
+
+    // Constructing the filter object based on provided parameters
+    const filter ={ name: { $regex: new RegExp(name, 'i') } };
+
+    if (!name) {
+        return response.status(400).send("Name parameter is required");
+    }
+    console.log("name:", name); // Log the value of the 'name' parameter
+    console.log("filter:", filter); // Log the value of the 'filter' object
+    
+    
+    // Connecting to MongoDB and executing the query with the constructed filter
+    mongoDB.connectDB()
+    .then((connect) => {
+        const controller = connect.db().collection("dishes");
+        // it will find all element and convert them in an array
+        controller.find(filter).toArray()
+            .then((rows) => response.send(rows))
+            .catch((error) => response.send(error));
+    })
+})
+
+// Endpoint to filter dishes by PRICE +++++++++++++++++++++++++++++++++
+app.get("/dishes/price", async (request, response) => {
+    const { minPrice, maxPrice } = request.query;
+
+    const filter = { 
+        price: { 
+            $gte: parseFloat(minPrice), 
+            $lte: parseFloat(maxPrice) 
+        } 
+    };
+
+    if (!minPrice || !maxPrice) {
+        return response.status(400).send("minPrice and maxPrice parameters are required");
+    }
+    console.log("price:", minPrice, maxPrice ); // Log the value of the 'price' parameters
+    console.log("filter:", filter); // Log the value of the 'filter' object
+
+    // Connecting to MongoDB and executing the query with the constructed filter
+    mongoDB.connectDB()
+    .then((connect) => {
+        const controller = connect.db().collection("dishes");
+        // it will find all element and convert them in an array
+        controller.find(filter).toArray()
+            .then((rows) => response.send(rows))
+            .catch((error) => response.send(error));
+    })
+});
+
+// Endpoint to filter dishes by PLANET OF ORIGIN ++++++++++++++++++++++++++++++
+app.get("/dishes/planet_of_origin", async (request, response) => {
+    const { planet_of_origin } = request.query;
+
+    if (!planet_of_origin) {
+        return response.status(400).send("Planet of origin parameter is required");
+    }
+
+    console.log("planet_of_origin:", planet_of_origin); // Log the value of the 'planet_of_origin' parameter
+    
+    // Constructing the filter object based on provided parameters
+    const filter ={ planet_of_origin: { $regex: new RegExp(planet_of_origin, 'i') } };
+
+    console.log("filter:", filter); // Log the value of the 'filter' object
+
+    // Connecting to MongoDB and executing the query with the constructed filter
+    mongoDB.connectDB()
+    .then((connect) => {
+        const controller = connect.db().collection("dishes");
+        // it will find all element and convert them in an array
+        controller.find(filter).toArray()
+            .then((rows) => response.send(rows))
+            .catch((error) => response.send(error));
+    })
+});
+
+
+// POST method, creates more dishes
 app.post("/dishes/create", (request, response) => {
     // getting list of name of dish
     mongoDB.connectDB()
@@ -116,7 +197,8 @@ app.post("/dishes/create", (request, response) => {
     })
 });
 
+
 // Listening for requests on port 5000
 app.listen(5000, () => {
-    console.log('now listening for request on port 5000\n');
+    console.log('Now listening for request on port 5000\n');
   });
