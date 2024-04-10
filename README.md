@@ -16,10 +16,23 @@ To get started with the Galactic Eatery Backend, follow these steps:
 
 1. Clone this repository to your local machine.
 2. Install the required dependencies by running `npm install`.
-3. Start the server by running `node index.js`.
-4. You're all set! The server should now be running on `http://localhost:5000`.
+3. Start your mongo service : `service mongod start`.
+4. Start the server by running `node index.js`.
+5. You're all set! The server should now be running on `http://localhost:5000`.
 
 ## Usage
+
+### API Endpoint Filters.
+
+To test every route using the GET method in your terminal, you can use the curl command.
+
+- Name = `curl http://127.0.0.1:5000/dishes/name?name=quasar-9`
+
+- Price = `curl http://127.0.0.1:5000/dishes/price?minPrice=20&maxPrice=30`
+
+- Planet of Origin = `curl http://127.0.0.1:5000/dishes/planet_of_origin?planet_of_origin=black%20hole`
+
+When you run this command, it will send a GET request to the specified URL and print the response from the server in your terminal in JSON format. You can test it as well in your web browser using the http protocol.
 
 ### Registering a New User
 
@@ -61,3 +74,4 @@ Replace `YOUR_JWT_TOKEN` with the JWT token received after logging in.
 ## Note
 
 Passwords are securely hashed using bcrypt before being stored in the database. Even though passwords are initially stored as plaintext in the `users.json` file, once a user registers or logs in, their password will be securely hashed in the database.
+```
