@@ -1,0 +1,12 @@
+# Dependencies Reference
+# This file lists all the dependencies used in the project as of [date].
+# It serves as a reference and doesn't affect the package.json file.
+
+
+the-galactic-eatery@1.0.0 /mnt/c/Users/dieon/OneDrive/Documents/Holberton_Projects/the-galactic-eatery/back_end
+├── bcryptjs@2.4.3
+├── express@4.19.2
+├── jsonwebtoken@9.0.2
+├── mongodb@6.5.0
+└── supertest@6.3.4
+
