@@ -22,14 +22,14 @@ $('#search-button').on('click', function() {
         // Make the request to the backend
         $.ajax({
             type: 'GET',
-            uri: '/search',
+            uri: 'http://localhost:5000/search',
             xhrFields: {
                 withCredentials: true
             },
             data: {
                 type: searchType, // Parameter indicating the type of search
                 term: searchTerm, // Search term
-                /* priceOption: $('#choosePrice').val() // Price option */
+                priceOption: $('#choosePrice').val() // Price option
             },
             success: function(response) {
                 // Handle server response

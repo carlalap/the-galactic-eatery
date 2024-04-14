@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs'); // Import bcryptjs for password hashing
 const jwt = require('jsonwebtoken'); // Import jsonwebtoken for token generation
 const fs = require('fs'); // Import filesystem module
 const cors = require('cors'); // cors middleware
+const path = require('path'); // Import the path module
 
 
 // Enable CORS for all requests
@@ -14,7 +15,7 @@ app.use(cors());
 const mongoDB = require("./connection");
 
 // configuring API to work wiht JSON format
-app.use(express.json());
+app.use(express.static(path.join(__dirname, '..', 'front_end')));
 
 
 // Define the search path in the backend that matches the frontend path
