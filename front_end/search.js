@@ -22,7 +22,7 @@ $('#search-button').on('click', function() {
         // Make the request to the backend
         $.ajax({
             type: 'GET',
-            uri: 'http://localhost:5000/search',
+            url: 'http://localhost:5000/search',
             xhrFields: {
                 withCredentials: true
             },
