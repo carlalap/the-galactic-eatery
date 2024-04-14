@@ -10,6 +10,7 @@ const path = require('path'); // Import the path module
 // Middleware for handling CORS POLICY
 // Enable CORS for all requests
 app.use(cors());
+app.use(express.json());
 
 // get connection.js module
 const mongoDB = require("./connection");
@@ -18,18 +19,28 @@ const mongoDB = require("./connection");
 app.use(express.static(path.join(__dirname, '..', 'front_end')));
 
 
+// Helper function to execute MongoDB query
+async function executeMongoQuery(filter, response) {
+    try {
+        const connect = await mongoDB.connectDB();
+        const controller = connect.db().collection("dishes");
+        const rows = await controller.find(filter).toArray();
+        response.json(rows);
+    } catch (error) {
+        response.status(500).json({ error: error.message });
+    }
+}
+
 // Define the search path in the backend that matches the frontend path
 app.get('/search', (req, res) => {
-    // Get the search type and search term of the request
     const { type, term } = req.query;
+    const priceOption = req.query.priceOption;
 
-    // Check search type
     if (type === 'planet') {
         searchByPlanet(term, res);
-    } else if (type === 'price') {
+    } else if (type === 'price' && priceOption) {
         let minPrice, maxPrice;
-        const priceOption = req.query.priceOption;
-        // Set minPrice and maxPrice based on the selected price option
+
         if (priceOption === '100') {
             minPrice = 10;
             maxPrice = 21;
@@ -40,14 +51,12 @@ app.get('/search', (req, res) => {
             minPrice = 32;
             maxPrice = 41;
         } else {
-            // Invalid price option
             return res.status(400).send('Invalid price option');
-        }   
-        // Call the searchByPrice function with the adjusted minPrice and maxPrice
+        }
+
         searchByPrice(minPrice, maxPrice, res);
     } else {
-        // If the search type is invalid, send an error message
-        res.status(400).send('Invalid search type');
+        res.status(400).send('Invalid search type or parameters');
     }
 });
 
@@ -144,84 +153,48 @@ app.get("/dishes", (request, response) => {
     })
 })
 
-// Endpoint to filter dishes by NAME   ++++++++++++++++++++++++++++++++++
+// Endpoint to filter dishes by NAME
 app.get("/dishes/name", async (request, response) => {
-    // getting filter parameters from query string
     const { name } = request.query;
-
-    // Constructing the filter object based on provided parameters
-    const filter ={ name: { $regex: new RegExp(name, 'i') } };
 
     if (!name) {
         return response.status(400).send("Name parameter is required");
     }
-    console.log("name:", name); // Log the value of the 'name' parameter
-    console.log("filter:", filter); // Log the value of the 'filter' object
-    
-    
-    // Connecting to MongoDB and executing the query with the constructed filter
-    mongoDB.connectDB()
-    .then((connect) => {
-        const controller = connect.db().collection("dishes");
-        // it will find all element and convert them in an array
-        controller.find(filter).toArray()
-            .then((rows) => response.send(rows))
-            .catch((error) => response.send(error));
-    })
-})
 
-// Function to filter dishes by PRICE +++++++++++++++++++++++++++++++++
+    const filter = { name: { $regex: new RegExp(name, 'i') } };
+    console.log("name:", name);
+    console.log("filter:", filter);
+
+    executeMongoQuery(filter, response);
+});
+
+// Function to filter dishes by PRICE
 function searchByPrice(minPrice, maxPrice, response) {
     if (!minPrice || !maxPrice) {
         return response.status(400).send("minPrice and maxPrice parameters are required");
     }
 
-    const filter = { 
-        price: { 
-            $gte: parseFloat(minPrice), 
-            $lte: parseFloat(maxPrice) 
-        } 
+    const filter = {
+        price: {
+            $gte: parseFloat(minPrice),
+            $lte: parseFloat(maxPrice)
+        }
     };
 
-    console.log("price:", minPrice, maxPrice ); // Log the value of the 'price' parameters
-    console.log("filter:", filter); // Log the value of the 'filter' object
+    console.log("price:", minPrice, maxPrice);
+    console.log("filter:", filter);
 
-    // Connecting to MongoDB and executing the query with the constructed filter
-    mongoDB.connectDB()
-    .then((connect) => {
-        const controller = connect.db().collection("dishes");
-        // it will find all element and convert them in an array
-        controller.find(filter).toArray()
-            .then((rows) => response.send(rows))
-            .catch((error) => response.send(error));
-    })
-    .catch((error) => response.status(500).send(error)); // Handle connection errors
-};
+    executeMongoQuery(filter, response);
+}
 
-// Endpoint to filter dishes by PLANET OF ORIGIN ++++++++++++++++++++++++++++++
+// Endpoint to filter dishes by PLANET OF ORIGIN
 function searchByPlanet(planet_of_origin, response) {
-    
-    if (!planet_of_origin) {
-        return response.status(400).send("Planet of origin parameter is required");
-    }
-    
-    // Constructing the filter object based on provided parameters
-    const filter ={ planet_of_origin: { $regex: new RegExp(planet_of_origin, 'i') } };
-    
-    console.log("planet_of_origin:", planet_of_origin); // Log the value of the 'planet_of_origin' parameter
-    console.log("filter:", filter); // Log the value of the 'filter' object
+    const filter = { planet_of_origin: { $regex: new RegExp(planet_of_origin, 'i') } };
+    console.log("planet_of_origin:", planet_of_origin);
+    console.log("filter:", filter);
 
-    // Connecting to MongoDB and executing the query with the constructed filter
-    mongoDB.connectDB()
-    .then((connect) => {
-        const controller = connect.db().collection("dishes");
-        // it will find all element and convert them in an array
-        controller.find(filter).toArray()
-            .then((rows) => response.send(rows))
-            .catch((error) => response.send(error));
-    })
-    .catch((error) => response.status(500).send(error)); // Handle connection errors
-};
+    executeMongoQuery(filter, response);
+}
 
 
 // POST method, creates more dishes

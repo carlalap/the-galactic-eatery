@@ -1,20 +1,19 @@
 // Add a click event to the search button
 $('#search-button').on('click', function() {
-        // Get the values of the search fields
-        var searchType = ''; // Initialize the search type variable
-        var searchTerm = ''; // Initialize the search term variable
-        var priceOption = $('#choosePrice').val(); // Get the selected price option
-        
-        // Check if you are searching by planet name or price range
-        if ($('#chooseLocation').length > 0) {
-            // Search by planet name
-            searchType = 'planet';
-            searchTerm = $('#chooseLocation').val();
-        } else if ($('#choosePrice').length > 0) {
-            // Search by price range
-            searchType = 'price';
-            searchTerm = $('#choosePrice').val();
-        }
+    // Get the values of the search fields
+    var searchType = '';
+    var searchTerm = '';
+
+    // Check if you are searching by planet name or price range
+    if ($('#chooseLocation').val() !== 'Planet of Origin') {
+        // Search by planet name
+        searchType = 'planet';
+        searchTerm = $('#chooseLocation').val().toLowerCase(); // Convert to lowercase
+    } else if ($('#choosePrice').val() !== 'Price Range') {
+        // Search by price range
+        searchType = 'price';
+        searchTerm = $('#choosePrice').val();
+    }
         
         // Show a loader or spinner to indicate that the request is in progress
         $('#search-results').html('<div class="loader">Loading...</div>');
