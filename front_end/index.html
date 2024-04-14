@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/home.css">
 
+        
   </head>
   
 <body>
@@ -59,6 +60,7 @@
   </header>
   <!-- ***** Header Area End ***** -->
 
+  <main> 
   <div class="page-heading">
     <div class="container">
       <div class="row">
@@ -71,42 +73,59 @@
     </div>
   </div>
 
-  <div class="search-form">
+
+   <!-- Searching bar -->
+  <section class="search-form">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <form id="search-form" name="gs" method="submit" role="search" action="#">
+          <form id="search-form" name="gs" method="submit" role="search">
             <div class="row">
               <div class="col-lg-2">
                 <h4>Eateries:</h4>
               </div>
               <div class="col-lg-4">
                   <fieldset>
-                      <select name="Location" class="form-select" aria-label="Default select example" id="chooseLocation" onChange="this.form.click()">
-                          <option selected>Resturant</option>
-                          <option type="checkbox" name="option1" value="Italy">Milky Way Galaxy</option>
-                          <option value="France">Andromeda Galaxy</option>
-                          <option value="Switzerland">Cigar Galaxy</option>
-                          <option value="Thailand">Black Eye Galaxy</option>
-                          <option value="Australia">Comet Galaxy</option>
+                      <legend>Planet of Origin</legend>
+                      <select name="Location" class="form-select" aria-label="Default select example" id="chooseLocation">
+                        <option selected>Planet of Origin</option>
+                        <option value="Alpha Centauri">Alpha Centauri</option>
+                        <option value="Andromeda">Andromeda</option>
+                        <option value="Asteroid Belt">Asteroid Belt</option>
+                        <option value="Black Hole">Black Hole</option>
+                        <option value="Comet">Comet</option>
+                        <option value="Earth">Earth</option>
+                        <option value="Exoplanet HD 189733b">Exoplanet HD 189733b</option>
+                        <option value="Luna">Luna</option>
+                        <option value="Mars">Mars</option>
+                        <option value="Orion">Orion</option>
+                        <option value="Pleiades">Pleiades</option>
+                        <option value="Pluto">Pluto</option>
+                        <option value="Quasar-9">Quasar-9</option>
+                        <option value="Sirius">Sirius</option>
+                        <option value="Stellaris Prime">Stellaris Prime</option>
+                        <option value="Sun">Sun</option>
+                        <option value="Supernova">Supernova</option>
+                        <option value="Various">Various</option>
+                        <option value="Vega">Vega</option>
+                        <option value="Venus">Venus</option>
                       </select>
                   </fieldset>
               </div>
               <div class="col-lg-4">
                   <fieldset>
-                      <select name="Price" class="form-select" aria-label="Default select example" id="choosePrice" onChange="this.form.click()">
+                      <legend>Price Range</legend>
+                      <select name="priceOption" class="form-select" aria-label="Default select example" id="choosePrice">
                           <option selected>Price Range</option>
-                          <option value="100">$10 - $25</option>
-                          <option value="250">$26 - $50</option>
-                          <option value="500">$51 - $100</option>
-                          <option value="1000">$101 - $250</option>
-                          <option value="2500+">$250+</option>
+                          <option value="100">$10 - $21</option>
+                          <option value="200">$22 - $31</option>
+                          <option value="300">$32 - $40</option>
                       </select>
                   </fieldset>
               </div>
               <div class="col-lg-2">                        
                   <fieldset>
-                      <button class="border-button">Search Results</button>
+                      <button id="search-button"class="border-button" data-dishId="<%= dish._id %>">Search Results</button>
                   </fieldset>
               </div>
             </div>
@@ -114,137 +133,13 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="amazing-deals">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-        </div>
-        <div class="col-lg-6 col-sm-6">
-          <div class="item">
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="image">
-                  <img src="assets/images/img_1.jpg" alt="">
-                </div>
-              </div>
-              <div class="col-lg-6 align-self-center">
-                <div class="content">
-                  <span class="info">*Limited Offer Today</span>
-                  <h4>Galactic food option 1</h4>
-                  <div class="row">
-                    <div class="col-6">
-                      <i class="fa fa-clock"></i>
-                      <span class="list">Reservations</span>
-                    </div>
-                    <div class="col-6">
-                      <i class="fa fa-map"></i>
-                      <span class="list">Daily Specials</span>
-                    </div>
-                  </div>
-                  <p>Planet X sourced Starblaze Steaks, Moonbeam Mushrooms, and Photon Peas.</p>
-                  <div class="main-button">
-                    <a href="index.html">Make a Reservation</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 col-sm-6">
-          <div class="item">
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="image">
-                  <img src="assets/images/img_2.jpg" alt="">
-                </div>
-              </div>
-              <div class="col-lg-6 align-self-center">
-                <div class="content">
-                  <span class="info">*Today & Tomorrow Only</span>
-                  <h4>Galactic food option 2</h4>
-                  <div class="row">
-                    <div class="col-6">
-                      <i class="fa fa-clock"></i>
-                      <span class="list">Reservations</span>
-                    </div>
-                    <div class="col-6">
-                      <i class="fa fa-map"></i>
-                      <span class="list">Daily Specials</span>
-                    </div>
-                  </div>
-                  <p>Tender Cod Filet sourced from planet Earth, Stellar Spinach, and Asteroid Arugula.</p>
-                  <div class="main-button">
-                    <a href="index.html">Make a Reservation</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 col-sm-6">
-          <div class="item">
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="image">
-                  <img src="assets/images/img_3.jpg" alt="">
-                </div>
-              </div>
-              <div class="col-lg-6 align-self-center">
-                <div class="content">
-                  <span class="info">*Weekly Deals</span>
-                  <h4>Galactic food option 3</h4>
-                  <div class="row">
-                    <div class="col-6">
-                      <i class="fa fa-clock"></i>
-                      <span class="list">Reservations</span>
-                    </div>
-                    <div class="col-6">
-                      <i class="fa fa-map"></i>
-                      <span class="list">Popular Dish</span>
-                    </div>
-                  </div>
-                  <p>Nebula Nuggets sourced from Planet M82,  Comet Corn, Black Hole Beets, and Gravity Greens.</p>
-                  <div class="main-button">
-                    <a href="index.html">Make a Reservation</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 col-sm-6">
-          <div class="item">
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="image">
-                  <img src="assets/images/img_4.jpg" alt="">
-                </div>
-              </div>
-              <div class="col-lg-6 align-self-center">
-                <div class="content">
-                  <span class="info">*Offer Until 24th May</span>
-                  <h4>Glasgow City Lorem</h4>
-                  <div class="row">
-                    <div class="col-6">
-                      <i class="fa fa-clock"></i>
-                      <span class="list">Reservations</span>
-                    </div>
-                    <div class="col-6">
-                      <i class="fa fa-map"></i>
-                      <span class="list">Daily Specials</span>
-                    </div>
-                  </div>
-                  <p>2 Pulsar Patties, Sector 5 Buns, Mars Lettuce, Tomatoes sourced from Earth, Gravity sauce, and a side Pulsar Fries.</p>
-                  <div class="main-button">
-                    <a href="index.html">Make a Reservation</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <!-- add result here -->
+  <div id="search-results" class="container"></div>
+  
+
+
         <div class="col-lg-12">
           <ul class="page-numbers">
             <li><a href="#"><i class="fa fa-arrow-left"></i></a></li>
@@ -257,6 +152,7 @@
       </div>
     </div>
   </div>
+  </main>
 
 <!-- Footer -->
   <footer>
@@ -271,20 +167,18 @@
 
 
   <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="search.js"></script>
+  <!-- Bootstrap script -->
+  <!-- <script src="vendor/bootstrap/js/bootstrap.min.js"></script> -->
 
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/custom.js"></script>
-
-  <script>
+ <!--  <script>
     $(".option").click(function(){
       $(".option").removeClass("active");
       $(this).addClass("active"); 
     });
-  </script>
+  </script> -->
 
   </body>
 

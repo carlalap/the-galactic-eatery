@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Galactic Eatery</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+
+  </head>
+  
+<body>
+  
+  <!-- ***** Header Area Start ***** -->
+  
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav d-flex justify-content-between">
+                    
+                  <!-- ***** Logo Start ***** -->
+                    
+                  <a href="index.html" class="logo">
+                        <img src="assets/images/logo.png" alt="">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+
+                    
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html">About</a></li>
+                        <li><a href="index.html">Mission</a></li>
+                        <li><a href="index.html">Info</a></li>
+                    </ul>
+                    <!-- Login Button and Menu Trigger -->
+                    <div class="d-flex align-items-center">
+                    <button class="btn btn-primary my-nav-btn">Login</button>  
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                  </div>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h4>Tastiest Meals</h4>
+          <h2>In the Galaxy &amp; Beyond</h2>
+          <div class="border-button"><a href="index.html">Discover More</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+   <!-- Searching bar -->
+  <div class="search-form">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <form id="search-form" name="gs" method="submit" role="search" action="#">
+            <div class="row">
+              <div class="col-lg-2">
+                <h4>Eateries:</h4>
+              </div>
+              <div class="col-lg-4">
+                  <fieldset>
+                      <select name="Location" class="form-select" aria-label="Default select example" id="chooseLocation" onChange="this.form.click()">
+                          <option selected>Resturant</option>
+                          <option type="checkbox" name="option1" value="Italy">Milky Way Galaxy</option>
+                          <option value="France">Andromeda Galaxy</option>
+                          <option value="Switzerland">Cigar Galaxy</option>
+                          <option value="Thailand">Black Eye Galaxy</option>
+                          <option value="Australia">Comet Galaxy</option>
+                      </select>
+                  </fieldset>
+              </div>
+              <div class="col-lg-4">
+                  <fieldset>
+                      <select name="Price" class="form-select" aria-label="Default select example" id="choosePrice" onChange="this.form.click()">
+                          <option selected>Price Range</option>
+                          <option value="100">$10 - $25</option>
+                          <option value="250">$26 - $50</option>
+                          <option value="500">$51 - $100</option>
+                          <option value="1000">$101 - $250</option>
+                          <option value="2500+">$250+</option>
+                      </select>
+                  </fieldset>
+              </div>
+              <div class="col-lg-2">                        
+                  <fieldset>
+                      <button class="border-button">Search Results</button>
+                  </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="amazing-deals">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+        </div>
+        <div class="col-lg-6 col-sm-6">
+          <div class="item">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="image">
+                  <img src="assets/images/img_1.jpg" alt="">
+                </div>
+              </div>
+              <div class="col-lg-6 align-self-center">
+                <div class="content">
+                  <span class="info">*Limited Offer Today</span>
+                  <h4>Galactic food option 1</h4>
+                  <div class="row">
+                    <div class="col-6">
+                      <i class="fa fa-clock"></i>
+                      <span class="list">Reservations</span>
+                    </div>
+                    <div class="col-6">
+                      <i class="fa fa-map"></i>
+                      <span class="list">Daily Specials</span>
+                    </div>
+                  </div>
+                  <p>Planet X sourced Starblaze Steaks, Moonbeam Mushrooms, and Photon Peas.</p>
+                  <div class="main-button">
+                    <a href="index.html">Make a Reservation</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+          <div class="item">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="image">
+                  <img src="assets/images/img_2.jpg" alt="">
+                </div>
+              </div>
+              <div class="col-lg-6 align-self-center">
+                <div class="content">
+                  <span class="info">*Today & Tomorrow Only</span>
+                  <h4>Galactic food option 2</h4>
+                  <div class="row">
+                    <div class="col-6">
+                      <i class="fa fa-clock"></i>
+                      <span class="list">Reservations</span>
+                    </div>
+                    <div class="col-6">
+                      <i class="fa fa-map"></i>
+                      <span class="list">Daily Specials</span>
+                    </div>
+                  </div>
+                  <p>Tender Cod Filet sourced from planet Earth, Stellar Spinach, and Asteroid Arugula.</p>
+                  <div class="main-button">
+                    <a href="index.html">Make a Reservation</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+          <div class="item">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="image">
+                  <img src="assets/images/img_3.jpg" alt="">
+                </div>
+              </div>
+              <div class="col-lg-6 align-self-center">
+                <div class="content">
+                  <span class="info">*Weekly Deals</span>
+                  <h4>Galactic food option 3</h4>
+                  <div class="row">
+                    <div class="col-6">
+                      <i class="fa fa-clock"></i>
+                      <span class="list">Reservations</span>
+                    </div>
+                    <div class="col-6">
+                      <i class="fa fa-map"></i>
+                      <span class="list">Popular Dish</span>
+                    </div>
+                  </div>
+                  <p>Nebula Nuggets sourced from Planet M82,  Comet Corn, Black Hole Beets, and Gravity Greens.</p>
+                  <div class="main-button">
+                    <a href="index.html">Make a Reservation</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+          <div class="item">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="image">
+                  <img src="assets/images/img_4.jpg" alt="">
+                </div>
+              </div>
+              <div class="col-lg-6 align-self-center">
+                <div class="content">
+                  <span class="info">*Offer Until 24th May</span>
+                  <h4>Glasgow City Lorem</h4>
+                  <div class="row">
+                    <div class="col-6">
+                      <i class="fa fa-clock"></i>
+                      <span class="list">Reservations</span>
+                    </div>
+                    <div class="col-6">
+                      <i class="fa fa-map"></i>
+                      <span class="list">Daily Specials</span>
+                    </div>
+                  </div>
+                  <p>2 Pulsar Patties, Sector 5 Buns, Mars Lettuce, Tomatoes sourced from Earth, Gravity sauce, and a side Pulsar Fries.</p>
+                  <div class="main-button">
+                    <a href="index.html">Make a Reservation</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <ul class="page-numbers">
+            <li><a href="#"><i class="fa fa-arrow-left"></i></a></li>
+            <li><a href="#">1</a></li>
+            <li class="active"><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2024 <a href="#">Galactic Eatery</a> All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="assets/js/isotope.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/custom.js"></script>
+
+  <script>
+    $(".option").click(function(){
+      $(".option").removeClass("active");
+      $(this).addClass("active"); 
+    });
+  </script>
+
+  </body>
+
+</html>

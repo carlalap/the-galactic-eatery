@@ -4,13 +4,52 @@ const app = express();
 const bcrypt = require('bcryptjs'); // Import bcryptjs for password hashing
 const jwt = require('jsonwebtoken'); // Import jsonwebtoken for token generation
 const fs = require('fs'); // Import filesystem module
+const cors = require('cors'); // cors middleware
 
+
+// Enable CORS for all requests
+app.use(cors());
 
 // get connection.js module
 const mongoDB = require("./connection");
 
 // configuring API to work wiht JSON format
 app.use(express.json());
+
+
+// Define the search path in the backend that matches the frontend path
+app.get('/search', (req, res) => {
+    // Get the search type and search term of the request
+    const { type, term } = req.query;
+
+    // Check search type
+    if (type === 'planet') {
+        searchByPlanet(term, res);
+    } else if (type === 'price') {
+        let minPrice, maxPrice;
+        const priceOption = req.query.priceOption;
+        // Set minPrice and maxPrice based on the selected price option
+        if (priceOption === '100') {
+            minPrice = 10;
+            maxPrice = 21;
+        } else if (priceOption === '200') {
+            minPrice = 22;
+            maxPrice = 31;
+        } else if (priceOption === '300') {
+            minPrice = 32;
+            maxPrice = 41;
+        } else {
+            // Invalid price option
+            return res.status(400).send('Invalid price option');
+        }   
+        // Call the searchByPrice function with the adjusted minPrice and maxPrice
+        searchByPrice(minPrice, maxPrice, res);
+    } else {
+        // If the search type is invalid, send an error message
+        res.status(400).send('Invalid search type');
+    }
+});
+
 
 // Register a new user
 app.post("/register", async (request, response) => {
@@ -130,9 +169,11 @@ app.get("/dishes/name", async (request, response) => {
     })
 })
 
-// Endpoint to filter dishes by PRICE +++++++++++++++++++++++++++++++++
-app.get("/dishes/price", async (request, response) => {
-    const { minPrice, maxPrice } = request.query;
+// Function to filter dishes by PRICE +++++++++++++++++++++++++++++++++
+function searchByPrice(minPrice, maxPrice, response) {
+    if (!minPrice || !maxPrice) {
+        return response.status(400).send("minPrice and maxPrice parameters are required");
+    }
 
     const filter = { 
         price: { 
@@ -141,9 +182,6 @@ app.get("/dishes/price", async (request, response) => {
         } 
     };
 
-    if (!minPrice || !maxPrice) {
-        return response.status(400).send("minPrice and maxPrice parameters are required");
-    }
     console.log("price:", minPrice, maxPrice ); // Log the value of the 'price' parameters
     console.log("filter:", filter); // Log the value of the 'filter' object
 
@@ -156,21 +194,20 @@ app.get("/dishes/price", async (request, response) => {
             .then((rows) => response.send(rows))
             .catch((error) => response.send(error));
     })
-});
+    .catch((error) => response.status(500).send(error)); // Handle connection errors
+};
 
 // Endpoint to filter dishes by PLANET OF ORIGIN ++++++++++++++++++++++++++++++
-app.get("/dishes/planet_of_origin", async (request, response) => {
-    const { planet_of_origin } = request.query;
-
+function searchByPlanet(planet_of_origin, response) {
+    
     if (!planet_of_origin) {
         return response.status(400).send("Planet of origin parameter is required");
     }
-
-    console.log("planet_of_origin:", planet_of_origin); // Log the value of the 'planet_of_origin' parameter
     
     // Constructing the filter object based on provided parameters
     const filter ={ planet_of_origin: { $regex: new RegExp(planet_of_origin, 'i') } };
-
+    
+    console.log("planet_of_origin:", planet_of_origin); // Log the value of the 'planet_of_origin' parameter
     console.log("filter:", filter); // Log the value of the 'filter' object
 
     // Connecting to MongoDB and executing the query with the constructed filter
@@ -182,7 +219,8 @@ app.get("/dishes/planet_of_origin", async (request, response) => {
             .then((rows) => response.send(rows))
             .catch((error) => response.send(error));
     })
-});
+    .catch((error) => response.status(500).send(error)); // Handle connection errors
+};
 
 
 // POST method, creates more dishes
