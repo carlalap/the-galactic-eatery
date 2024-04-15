@@ -8,7 +8,13 @@ const cors = require('cors'); // cors middleware
 
 
 // Enable CORS for all requests
-app.use(cors());
+app.use(
+    cors({
+        origin: '*',
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        allowedHeaders: ['Content-Type'],
+    })
+);
 
 // get connection.js module
 const mongoDB = require("./connection");
@@ -164,7 +170,7 @@ app.get("/dishes/price", async (request, response) => {
 });
 
 // Endpoint to filter dishes by PLANET OF ORIGIN ++++++++++++++++++++++++++++++
-app.get("/dishes/planet_of_origin", async (request, response) => {
+app.get("/dishes/:planet_of_origin", async (request, response) => {
     const { planet_of_origin } = request.params; 
 
     if(!planet_of_origin) {
@@ -184,8 +190,14 @@ app.get("/dishes/planet_of_origin", async (request, response) => {
         const controller = connect.db().collection("dishes");
         // it will find all element and convert them in an array
         controller.find(filter).toArray()
-            .then((rows) => response.send(rows))
-            .catch((error) => response.send(error));
+        .then((rows) => {
+            console.log("Retrieved data from database:", rows); // Log the retrieved data
+            response.send(rows); // Send the retrieved data as the response
+        })
+        .catch((error) => {
+            console.error("Error retrieving data from database:", error); // Log any error that occurs
+            response.send(error); // Send the error as the response
+        });
     })
 });
 
