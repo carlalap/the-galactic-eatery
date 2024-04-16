@@ -71,30 +71,41 @@
     </div>
   </div>
 
-  <select id="planetSelect">
-    <option value>Select Planet of Origin</option>
-    <option value="Alpha Centauri">Alpha Centauri</option>
-    <option value="Andromeda">Andromeda</option>
-    <option value="Asteroid Belt">Asteroid Belt</option>
-    <option value="Black Hole">Black Hole</option>
-    <option value="Comet">Comet</option>
-    <option value="Earth">Earth</option>
-    <option value="Exoplanet HD 189733b">Exoplanet HD 189733b</option>
-    <option value="Luna">Luna</option>
-    <option value="Mars">Mars</option>
-    <option value="Orion">Orion</option>
-    <option value="Pleiades">Pleiades</option>
-    <option value="Pluto">Pluto</option>
-    <option value="Quasar-9">Quasar-9</option>
-    <option value="Sirius">Sirius</option>
-    <option value="Stellaris Prime">Stellaris Prime</option>
-    <option value="Sun">Sun</option>
-    <option value="Supernova">Supernova</option>
-    <option value="Various">Various</option>
-    <option value="Vega">Vega</option>
-    <option value="Venus">Venus</option>
-      <!-- Add other planets here -->
-  </select>
+  <div class="search-form">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <form id="search-form" name="gs" method="submit" role="search" action="#">
+            <div class="row">
+              <div class="col-lg-2">
+                <h4>Eateries:</h4>
+              </div>
+              <div class="col-lg-4">
+                  <fieldset>
+                    <select id="planetSelect">
+                      <option value>Select Planet of Origin</option>
+                      <option value="Alpha Centauri">Alpha Centauri</option>
+                      <option value="Andromeda">Andromeda</option>
+                      <option value="Asteroid Belt">Asteroid Belt</option>
+                      <option value="Black Hole">Black Hole</option>
+                      <option value="Comet">Comet</option>
+                      <option value="Earth">Earth</option>
+                      <option value="Exoplanet HD 189733b">Exoplanet HD 189733b</option>
+                      <option value="Luna">Luna</option>
+                      <option value="Mars">Mars</option>
+                      <option value="Orion">Orion</option>
+                      <option value="Pleiades">Pleiades</option>
+                      <option value="Pluto">Pluto</option>
+                      <option value="Quasar-9">Quasar-9</option>
+                      <option value="Sirius">Sirius</option>
+                      <option value="Stellaris Prime">Stellaris Prime</option>
+                      <option value="Sun">Sun</option>
+                      <option value="Supernova">Supernova</option>
+                      <option value="Various">Various</option>
+                      <option value="Vega">Vega</option>
+                      <option value="Venus">Venus</option>
+                        <!-- Add other planets here -->
+                  </select>
     <button id="searchButton">Search</button>
   
   
@@ -128,14 +139,9 @@
   
   <!-- Scripts -->
   
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="index.js"></script>
 
   <!-- Scripts -->
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/custom.js"></script>
  
   </body>
 

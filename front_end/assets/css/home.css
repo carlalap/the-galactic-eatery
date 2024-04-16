@@ -916,6 +916,8 @@ body {
   .amazing-deals .item .image {
     border-top-right-radius: 23px;
     border-bottom-left-radius: 0px;
+    width: '100%';
+    height: 'auto';
   }
   .amazing-deals .item {
     padding-right: 0px;
