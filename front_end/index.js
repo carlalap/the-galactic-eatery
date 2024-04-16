@@ -1,3 +1,6 @@
+/* this script is  event listener that triggers when the DOM content is fully loaded. 
+It sets up functionality for the <- searchButton -> that fetches data from the back-end server based
+on the selected planet and displays the fetched dishes on the front-end webpage. */
 document.addEventListener('DOMContentLoaded', () => {
     const planetSelect = document.getElementById('planetSelect');
     const searchButton = document.getElementById('searchButton');
@@ -38,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             row.classList.add('row');
             
             const col1 = document.createElement('div');
-            col1.classList.add('col-lg-3');
+            col1.classList.add('col-lg-3', 'col-sm-12');
             
             const image = document.createElement('div');
             image.classList.add('image');
@@ -69,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             col3.classList.add('col-6');
             
             const i1 = document.createElement('i');
-            i1.classList.add('fa', 'fa-clock');
+            i1.classList.add('fa', 'fa-globe');
             
             const planet_of_origi = document.createElement('span');
             planet_of_origi.classList.add('planet_of_origi');
@@ -82,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             col4.classList.add('col-6');
             
             const i2 = document.createElement('i');
-            i2.classList.add('fa', 'fa-map');
+            i2.classList.add('fa', 'fa-money');
             
             const price = document.createElement('span');
             price.classList.add('price');
@@ -97,12 +100,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const description = document.createElement('span');
             description.classList.add('description');
             description.textContent = dish.description;
+            description.style.marginBottom= '2px';
             
             const mainButton = document.createElement('div');
             mainButton.classList.add('main-button');
+            mainButton.style.marginBottom = '2px';
             
             const reservationLink = document.createElement('a');
-            reservationLink.href = 'index.html';
+            reservationLink.href = '#';
             reservationLink.textContent = 'Make a Reservation';
             
             mainButton.appendChild(reservationLink);
