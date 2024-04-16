@@ -44,9 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
             image.classList.add('image');
             
             const img = document.createElement('img');
-            img.src = `./assets/images/img_1.jpg`; // replace wiht ${dish._id}
-            img.alt = '';
-            
+            img.src = dish.imageURL; // replace wiht ${dish._id}
+            img.alt = '';            
             image.appendChild(img);
             col1.appendChild(image);
             
