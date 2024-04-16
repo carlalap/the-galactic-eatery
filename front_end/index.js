@@ -38,13 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
             row.classList.add('row');
             
             const col1 = document.createElement('div');
-            col1.classList.add('col-lg-6');
+            col1.classList.add('col-lg-3');
             
             const image = document.createElement('div');
             image.classList.add('image');
             
             const img = document.createElement('img');
-            img.src = `./assets/images/${dish._id}.jpg`;
+            img.src = `./assets/images/img_1.jpg`; // replace wiht ${dish._id}
             img.alt = '';
             
             image.appendChild(img);
