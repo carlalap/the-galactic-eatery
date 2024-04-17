@@ -1,6 +1,14 @@
 /* this script is  event listener that triggers when the DOM content is fully loaded. 
 It sets up functionality for the <- searchButton -> that fetches data from the back-end server based
 on the selected planet and displays the fetched dishes on the front-end webpage. */
+
+// Define the logger object
+const logger = {
+    log: (...args) => console.log(...args),
+    warn: (...args) => console.warn(...args),
+    error: (...args) => console.error(...args),
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     const planetSelect = document.getElementById('planetSelect');
     const searchButton = document.getElementById('searchButton');
@@ -9,19 +17,21 @@ document.addEventListener('DOMContentLoaded', () => {
     searchButton.addEventListener('click', async () => {
         const planet = planetSelect.value;
         if (!planet) {
-            alert('Please select a planet');
+            logger.warn('Please select a planet');
             return;
         }
-
+    
         try {
+            logger.log('Fetching dishes for planet:', planet);
             const response = await fetch(`http://localhost:5000/dishes/${planet}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
             }
             const data = await response.json();
+            logger.log('Fetched data:', data);
             displayDishes(data);
         } catch (error) {
-            console.error(error);
+            logger.error('Error occurred while fetching data:', error);
             alert('An error occurred while fetching data');
         }
     });
