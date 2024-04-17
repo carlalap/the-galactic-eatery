@@ -40,7 +40,7 @@ curl -X POST \
     "username": "YOUR_USERNAME",
     "password": "YOUR_PASSWORD"
 }'
-```bash
+bash```
 
 ### User Login
 
@@ -67,7 +67,7 @@ curl -X POST \
     "username": "YOUR_USERNAME",
     "password": "YOUR_PASSWORD"
 }'
-```bash
+bash```
 
 ### Get All Dishes
 
@@ -83,7 +83,7 @@ Example using cURL:
 ```bash
 curl -X GET \
   http://localhost:5000/dishes
-```bash
+bash```
 
 ### Filter Dishes by Name
 
@@ -104,7 +104,7 @@ Example using cURL:
 ```bash
 curl -X GET \
   'http://localhost:5000/dishes/name?name=quasar-9'
-```bash
+bash```
 
 ### Filter Dishes by Planet of Origin
 
@@ -125,7 +125,7 @@ Example using cURL:
 ```bash
 curl -X GET \
   'http://localhost:5000/dishes/planet_of_origin?planet_of_origin=black%20hole'
-```bash
+bash```
 
 ### Create a New Dish
 
@@ -149,7 +149,7 @@ curl -X POST \
     "price": 9.99,
     "planet_of_origin": "Earth"
   }'
-```bash
+bash```
 
 ## Note
 
