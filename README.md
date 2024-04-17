@@ -12,11 +12,11 @@ Utilizing all the skills we've developed over the last two trimesters, we have c
 
 Welcome to the Galactic Eatery Project. This repository contains the code for an automatic consultation of the menu of different exotic dishes across the Galaxy.
 
-After the design stage, we began creating and populating locally the data into our database, so that later our API could interact with it.
+After the design stage, we began creating and populating locally the data into our <b>database,</b> so that later our <b>API</b> could interact with it. Additionally we included the following: <strong> A logger, Authentication for the user of the API and included unittest. </strong>
 
 For the backend, once our database <b>MongoDB</b> was in place and populated with data, we built our API to interact with our data. In this project, our API retrieves data from the database. We then mapped the database data to more useful models (just in case). Finally, we sent it back in an HTTP response using the correct status codes. During development, we used <b>Postman</b> to ensure our API was working properly.
 
-After integrating with the backend, we developed a single-page frontend application that leverages the API to display data to the user. Even though the backend categorizes different search endpoints, the frontend displays data featuring dishes categorized by their planet of origin across the galaxy.
+After integrating with the backend, we developed a <b>single-page frontend application</b> that leverages the API to display data to the user. Even though the backend categorizes different search endpoints, the frontend displays data featuring dishes categorized by their planet of origin across the galaxy.
 
 ## Tech Stack Used in this Project
 
