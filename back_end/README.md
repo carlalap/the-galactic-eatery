@@ -32,7 +32,7 @@ Response:
 
 Example using cURL:
 
-````bash
+```bash
 curl -X POST \
   http://localhost:5000/register \
   -H 'Content-Type: application/json' \
@@ -40,7 +40,7 @@ curl -X POST \
     "username": "YOUR_USERNAME",
     "password": "YOUR_PASSWORD"
 }'
-bash```
+```
 
 ### User Login
 
@@ -67,7 +67,7 @@ curl -X POST \
     "username": "YOUR_USERNAME",
     "password": "YOUR_PASSWORD"
 }'
-bash```
+```
 
 ### Get All Dishes
 
@@ -83,7 +83,7 @@ Example using cURL:
 ```bash
 curl -X GET \
   http://localhost:5000/dishes
-bash```
+```
 
 ### Filter Dishes by Name
 
@@ -104,7 +104,7 @@ Example using cURL:
 ```bash
 curl -X GET \
   'http://localhost:5000/dishes/name?name=quasar-9'
-bash```
+```
 
 ### Filter Dishes by Planet of Origin
 
@@ -125,7 +125,7 @@ Example using cURL:
 ```bash
 curl -X GET \
   'http://localhost:5000/dishes/planet_of_origin?planet_of_origin=black%20hole'
-bash```
+```
 
 ### Create a New Dish
 
@@ -149,13 +149,15 @@ curl -X POST \
     "price": 9.99,
     "planet_of_origin": "Earth"
   }'
-bash```
+```
 
 ## Note
 
 - Passwords are securely hashed using bcrypt before being stored in the database. Even though passwords are initially stored as plaintext in the users.json file, once a user registers or logs in, their password will be securely hashed in the database.
 - The API utilizes MongoDB as the database for storing dish information. Mongoose is used as the ODM (Object Document Mapper) to interact with the MongoDB database.
 - The frontend of the Galactic Eatery is built using HTML, CSS, and JavaScript. It communicates with the backend API to retrieve and display data dynamically on the website.
-````
+
+```
 
 [Back To Main](https://github.com/carlalap/the-galactic-eatery)
+```

@@ -1,3 +1,5 @@
+// This file manage all API information to connect wiht the DB, logging and authentication
+
 // import express framework
 const express = require('express');
 const app = express();
