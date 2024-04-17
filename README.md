@@ -18,99 +18,54 @@ After integrating with the backend, we built a single-page frontend application 
 
 ## Tech Stack Used in this Project
 
-<table border="1">
-  <thead>
-    <tr>
-      <th style="color: black; background-color: lightblue;">Category</th>
-      <th style="color: black; background-color: lightblue;">Tool</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Languages</td>
-      <td>JavaScript</td>
-    </tr>
-    <tr>
-      <td>Frameworks</td>
-      <td>Node.js</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>Express</td>
-    </tr>
-    <tr>
-      <td>Libraries</td>
-      <td>JQuery</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>bcryptjs</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>cors</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>jsonwebtoken</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>mongodb</td>
-    </tr>
-    <tr>
-      <td>Testing</td>
-      <td>jest</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>supertest</td>
-    </tr>
-    <tr>
-      <td>Tools</td>
-      <td>Docker</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>Postman</td>
-    </tr>
-    <tr>
-      <td>DBMS</td>
-      <td>MongoDB</td>
-    </tr>
-  </tbody>
-</table>
+| Category   | Tool         |
+| ---------- | ------------ |
+| Languages  | JavaScript   |
+| Frameworks | Node.js      |
+|            | Express      |
+| Libraries  | JQuery       |
+|            | bcryptjs     |
+|            | cors         |
+|            | jsonwebtoken |
+|            | mongodb      |
+| Testing    | jest         |
+|            | supertest    |
+| Tools      | Docker       |
+|            | Postman      |
+| DBMS       | MongoDB      |
 
 ## Repository General Structure
 
 The following is the directory structure of our project:
 
-the-galactic-eatery/
-├── Dockerfile
-├── Makefile
-├── README.md
-├── back_end/
-│ ├── API_DOC.md
-│ ├── connection.js
-│ ├── galactic_menu.js
-│ ├── index.js
-│ ├── models/
-│ │ └── User.js
-│ ├── package-lock.json
-│ ├── package.json
-│ ├── test/
-│ │ └── backend.test.js
-│ └── users.json
-├── front_end/
-│ ├── assets/
-│ │ ├── css/
-│ │ ├── images/
-│ │ └── webfonts/
-│ ├── bootstrap/
-│ ├── index.html
-│ ├── index.js
-│ └── index_original.html
-└── init.d-mongod
+| Directory/File                |
+| ----------------------------- |
+| the-galactic-eatery/          |
+| ├── Dockerfile                |
+| ├── Makefile                  |
+| ├── README.md                 |
+| [├── back_end/](/back_end/)   |
+| │ ├── API_DOC.md              |
+| │ ├── connection.js           |
+| │ ├── galactic_menu.js        |
+| │ ├── index.js                |
+| │ ├── models/                 |
+| │ │ └── User.js               |
+| │ ├── package-lock.json       |
+| │ ├── package.json            |
+| │ ├── test/                   |
+| │ │ └── backend.test.js       |
+| │ └── users.json              |
+| [├── front_end/](/front_end/) |
+| │ ├── assets/                 |
+| │ │ ├── css/                  |
+| │ │ ├── images/               |
+| │ │ └── webfonts/             |
+| │ ├── bootstrap/              |
+| │ ├── index.html              |
+| │ ├── index.js                |
+| │ └── index_original.html     |
+| └── init.d-mongod             |
 
 ## Getting Started
 
