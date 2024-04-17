@@ -1,6 +1,6 @@
-# Galactic Eatery API Documentation
+# Galactic Eatery Backend API Documentation
 
-Welcome to the Galactic Eatery API documentation! This API allows you to search for different restaurant dishes throughout the universe based on their planet of origin location.
+Welcome to the Galactic Eatery API documentation! Here, you'll find all the files responsible for creating and populating the MongoDB database, as well as the APIs, logging, and authentication methods for the localhost backend. This API enables you to search for various restaurant dishes across the universe, categorized by their name, price or planet of origin.
 
 ## Base URL
 
@@ -11,7 +11,7 @@ Welcome to the Galactic Eatery API documentation! This API allows you to search 
 Some endpoints require authentication using JSON Web Tokens (JWT). To authenticate, include the JWT token in the Authorization header of the request with the prefix Bearer.
 
 Example:
- Authorization: Bearer <JWT_TOKEN>
+Authorization: Bearer <JWT_TOKEN>
 
 ## Endpoints
 
@@ -32,7 +32,7 @@ Response:
 
 Example using cURL:
 
-```bash
+````bash
 curl -X POST \
   http://localhost:5000/register \
   -H 'Content-Type: application/json' \
@@ -44,8 +44,8 @@ bash```
 
 ### User Login
 
-URL: `/login`  
-Method: `POST`  
+URL: `/login`
+Method: `POST`
 Request Body:
 
 - `username` (string, required): The username of the user.
@@ -71,8 +71,8 @@ bash```
 
 ### Get All Dishes
 
-URL: `/dishes`  
-Method: `GET`  
+URL: `/dishes`
+Method: `GET`
 Response:
 
 - `200 OK`: Returns an array of all dishes.
@@ -87,8 +87,8 @@ bash```
 
 ### Filter Dishes by Name
 
-URL: `/dishes/name`  
-Method: `GET`  
+URL: `/dishes/name`
+Method: `GET`
 Query Parameters:
 
 - `name` (string, required): The name or partial name of the dish.
@@ -108,8 +108,8 @@ bash```
 
 ### Filter Dishes by Planet of Origin
 
-URL: `/dishes/:planet_of_origin`  
-Method: `GET`  
+URL: `/dishes/:planet_of_origin`
+Method: `GET`
 URL Parameters:
 
 - `planet_of_origin` (string, required): The planet of origin of the dish.
@@ -156,3 +156,6 @@ bash```
 - Passwords are securely hashed using bcrypt before being stored in the database. Even though passwords are initially stored as plaintext in the users.json file, once a user registers or logs in, their password will be securely hashed in the database.
 - The API utilizes MongoDB as the database for storing dish information. Mongoose is used as the ODM (Object Document Mapper) to interact with the MongoDB database.
 - The frontend of the Galactic Eatery is built using HTML, CSS, and JavaScript. It communicates with the backend API to retrieve and display data dynamically on the website.
+````
+
+[Back To Main](https://github.com/carlalap/the-galactic-eatery)

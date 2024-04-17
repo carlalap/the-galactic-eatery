@@ -2,6 +2,8 @@
 
 ## Custom API From Scratch
 
+![Galactic Eatery Output](/front_end/assets/images/last_output2.png)
+
 ## Project Context
 
 Utilizing all the skills we've developed over the last two trimesters, we have created our very own API from start to finish. We designed it, narrowed down what should be included in our MVP (minimum viable product), and worked together as a team to bring our idea to life.
@@ -14,7 +16,7 @@ After the design stage, we began creating and populating locally the data into o
 
 For the backend, once our database <b>MongoDB</b> was in place and populated with data, we built our API to interact with our data. In this project, our API retrieves data from the database. We then mapped the database data to more useful models (just in case). Finally, we sent it back in an HTTP response using the correct status codes. During development, we used <b>Postman</b> to ensure our API was working properly.
 
-After integrating with the backend, we built a single-page frontend application that utilizes the API to present data to the user. The data displayed includes dishes categorized by their planet of origin across the galaxy.
+After integrating with the backend, we developed a single-page frontend application that leverages the API to display data to the user. Even though the backend categorizes different search endpoints, the frontend displays data featuring dishes categorized by their planet of origin across the galaxy.
 
 ## Tech Stack Used in this Project
 
@@ -136,3 +138,9 @@ Replace `YOUR_JWT_TOKEN` with the JWT token received after logging in.
 
 Passwords are securely hashed using bcrypt before being stored in the database. Even though passwords are initially stored as plaintext in the `users.json` file, once a user registers or logs in, their password will be securely hashed in the database.
 ```
+
+## Authors
+
+- [Alton Andrews](https://github.com/AAndrews-1982)
+- [Josh Davis](https://github.com/JD037)
+- [Carlos Alarcon](https://github.com/carlalap)
