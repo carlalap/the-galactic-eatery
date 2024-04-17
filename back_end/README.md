@@ -157,7 +157,4 @@ curl -X POST \
 - The API utilizes MongoDB as the database for storing dish information. Mongoose is used as the ODM (Object Document Mapper) to interact with the MongoDB database.
 - The frontend of the Galactic Eatery is built using HTML, CSS, and JavaScript. It communicates with the backend API to retrieve and display data dynamically on the website.
 
-```
-
 [Back To Main](https://github.com/carlalap/the-galactic-eatery)
-```
